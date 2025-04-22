@@ -2,7 +2,7 @@
 
 TFile* fAnalysisResults;
 
-constexpr int nPoints = 4;
+constexpr int nPoints = 5;
 
 TH1* GetTH1(TFile* f, TString histname)
 {
@@ -359,8 +359,10 @@ std::pair<double, double> PlotDCAMCH(std::string histName)
 {
   std::string fullHistName = std::string("qa-muon/alignment/") + histName;
   TH1* histogram = GetTH1(fAnalysisResults, fullHistName);
-  histogram->Rebin(2);
   //std::cout << fullHistName << " -> " << histogram << std::endl;
+  if (!histogram)
+    return {};
+  histogram->Rebin(4);
 
   histogram->Draw("E");
 
@@ -407,12 +409,12 @@ std::pair<double, double> PlotDCAMCH(std::string histName)
 
 void PlotZTrend(int n, double* xv, std::array<std::array<std::pair<double, double>, 4>, nPoints + 1>& values, const char* title, double ymin, double ymax, TCanvas& c)
 {
-  double exv[nPoints + 1] = {0, 0, 0, 0};
+  double exv[nPoints + 1] = {0, 0, 0, 0, 0};
   double yv[nPoints + 1];
   double eyv[nPoints + 1];
   std::array<std::string, 4> quadrants = {"Q0", "Q1", "Q2", "Q3"};
 
-  int colors[4] = {kBlue, kRed, kGreen - 2, kMagenta};
+  int colors[4] = {kBlue, kRed, kOrange, kCyan};
   int markers[4] = {kStar, kCircle, kMultiply, kFullDotLarge};
 
   c.Clear();
@@ -459,7 +461,7 @@ void plot_alignment_new_AO2D()
       firstMFTPlaneZ,
       lastMFTPlaneZ,
       -90.0,
-      //-300.0,
+      -300.0,
       //-505.0,
       -520.0
   };
@@ -468,7 +470,7 @@ void plot_alignment_new_AO2D()
       "MFT-begin",
       "MFT-end",
       "absorber-begin",
-      //"absorber-mid",
+      "absorber-mid",
       //"absorber-end",
       "MCH-begin"
   };
@@ -491,8 +493,8 @@ void plot_alignment_new_AO2D()
   TCanvas c("c", "c", 1200, 800);
   c.SaveAs("alignment_AO2D.pdf(");
 
+  c.Clear();
   c.Divide(2, 2);
-
   for (int j = 0; j < quadrants.size(); j++) {
     if (j == 0) c.cd(2);
     if (j == 1) c.cd(1);
@@ -502,6 +504,8 @@ void plot_alignment_new_AO2D()
   }
   c.SaveAs("alignment_AO2D.pdf");
 
+  c.Clear();
+  c.Divide(2, 2);
   for (int j = 0; j < quadrants.size(); j++) {
     if (j == 0) c.cd(2);
     if (j == 1) c.cd(1);
@@ -511,6 +515,8 @@ void plot_alignment_new_AO2D()
   }
   c.SaveAs("alignment_AO2D.pdf");
 
+  c.Clear();
+  c.Divide(2, 2);
   for (int j = 0; j < quadrants.size(); j++) {
     if (j == 0) c.cd(2);
     if (j == 1) c.cd(1);
@@ -519,13 +525,55 @@ void plot_alignment_new_AO2D()
     meanDx[0][j] = PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_x");
   }
   c.SaveAs("alignment_AO2D.pdf");
+  c.Clear();
+  c.Divide(2, 2);
+  for (int j = 0; j < quadrants.size(); j++) {
+    if (j == 0) c.cd(2);
+    if (j == 1) c.cd(1);
+    if (j == 2) c.cd(3);
+    if (j == 3) c.cd(4);
+    PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_x_pos");
+  }
+  c.SaveAs("alignment_AO2D.pdf");
+  c.Clear();
+  c.Divide(2, 2);
+  for (int j = 0; j < quadrants.size(); j++) {
+    if (j == 0) c.cd(2);
+    if (j == 1) c.cd(1);
+    if (j == 2) c.cd(3);
+    if (j == 3) c.cd(4);
+    PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_x_neg");
+  }
+  c.SaveAs("alignment_AO2D.pdf");
 
+  c.Clear();
+  c.Divide(2, 2);
   for (int j = 0; j < quadrants.size(); j++) {
     if (j == 0) c.cd(2);
     if (j == 1) c.cd(1);
     if (j == 2) c.cd(3);
     if (j == 3) c.cd(4);
     meanDy[0][j] = PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_y");
+  }
+  c.SaveAs("alignment_AO2D.pdf");
+  c.Clear();
+  c.Divide(2, 2);
+  for (int j = 0; j < quadrants.size(); j++) {
+    if (j == 0) c.cd(2);
+    if (j == 1) c.cd(1);
+    if (j == 2) c.cd(3);
+    if (j == 3) c.cd(4);
+    PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_y_pos");
+  }
+  c.SaveAs("alignment_AO2D.pdf");
+  c.Clear();
+  c.Divide(2, 2);
+  for (int j = 0; j < quadrants.size(); j++) {
+    if (j == 0) c.cd(2);
+    if (j == 1) c.cd(1);
+    if (j == 2) c.cd(3);
+    if (j == 3) c.cd(4);
+    PlotDCAMCH(std::string("DCA/MCH/") + quadrants[j] + "/DCA_y_neg");
   }
   c.SaveAs("alignment_AO2D.pdf");
 
@@ -590,13 +638,13 @@ void plot_alignment_new_AO2D()
   }
 
 
-  double xv[nPoints + 1] = {0, -zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3]};
-  double xv2[nPoints] = {-zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3]};
+  double xv[nPoints + 1] = {0, -zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3], -zRefPlane[4]};
+  double xv2[nPoints] = {-zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3], -zRefPlane[4]};
 
   PlotZTrend(nPoints + 1, xv, meanDx, "#Delta(x) vs. z;z (cm); #Delta(x) (cm)", -1.0, 1.0, c);
   PlotZTrend(nPoints, xv2, meanDThetax, "#Delta(#theta_{x}) vs. z;z (cm); #Delta(#theta_{x}) (cm)", -0.2, 0.2, c);
 
-  PlotZTrend(nPoints + 1, xv, meanDy, "#Delta(y) vs. z;z (cm); #Delta(y) (cm)", -1.0, 2.0, c);
+  PlotZTrend(nPoints + 1, xv, meanDy, "#Delta(y) vs. z;z (cm); #Delta(y) (cm)", -2.0, 2.0, c);
   PlotZTrend(nPoints, xv2, meanDThetay, "#Delta(#theta_{y}) vs. z;z (cm); #Delta(#theta_{y}) (cm)", -0.2, 0.2, c);
 
   c.Clear();

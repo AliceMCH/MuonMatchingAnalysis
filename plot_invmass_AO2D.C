@@ -10,7 +10,7 @@ TH1* GetTH1(TFile* f, TString histname)
 
   //TString histname = TString::Format("ST%d/DE%d/Occupancy_B_XY_%d", station, de, de);
   TKey *key = f->GetKey(histname);
-  std::cout << "histname: " << histname << "  key: " <<key << std::endl;
+  //std::cout << "histname: " << histname << "  key: " <<key << std::endl;
   if (!key) return NULL;
   return (TH1*)key->ReadObjectAny(TH1::Class());
 }
@@ -22,7 +22,7 @@ TH2* GetTH2(TFile* f, TString histname)
 
   //TString histname = TString::Format("ST%d/DE%d/Occupancy_B_XY_%d", station, de, de);
   TKey *key = f->GetKey(histname);
-  std::cout << "histname: " << histname << "  key: " <<key << std::endl;
+  //std::cout << "histname: " << histname << "  key: " <<key << std::endl;
   if (!key) return NULL;
   return (TH2*)key->ReadObjectAny(TH2::Class());
 }
@@ -116,13 +116,15 @@ void plot_invmass_AO2D()
 {
   //fAnalysisResults = new TFile("AnalysisResults.root");
   //fAnalysisResults = new TFile("AnalysisResults/AnalysisResultsFull.root");
+  fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-no-MFT-realignment/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-5/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24l7/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC22p/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC23zk/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-4/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-7/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24aq-apass1_muon_matching-qa/AnalysisResultsFull.root");
-  fAnalysisResults = new TFile("AnalysisResults-LHC23h-apass4_skimmed-qa/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults-LHC23h-apass4_skimmed-qa/AnalysisResultsFull.root");
 
   int rebin = 1;
 
@@ -191,6 +193,65 @@ void plot_invmass_AO2D()
   invmassMuonTracks5->Draw("hist");
   invmassMuonTracks4->Draw("same");
   c.SaveAs("invmass_AO2D.pdf");
+
+  c.Clear();
+  c.Divide(2,2);
+  // top-top
+  c.cd(1);
+  TH1* invmass = GetTH1(fAnalysisResults, "qa-muon/dimuon/invariantMass_ScaledMftKine_GlobalMatchesCuts_TT");
+  TH1* invmassME = GetTH1(fAnalysisResults, "qa-muon/dimuon/mixed-events/invariantMass_ScaledMftKine_GlobalMatchesCuts_TT");
+  if (invmass) {
+  NormalizeInvmassME(invmass, invmassME);
+  invmass->SetLineColor(kBlack);
+  invmass->Rebin(rebin);
+  invmass->GetXaxis()->SetRangeUser(massMin, massMax);
+  invmass->Draw("E");
+  //invmassMuonTracks4ME->Draw("same");
+  FitJPsi(invmass);
+  }
+  // top-bottom
+  c.cd(2);
+  invmass = GetTH1(fAnalysisResults, "qa-muon/dimuon/invariantMass_ScaledMftKine_GlobalMatchesCuts_TB");
+  invmassME = GetTH1(fAnalysisResults, "qa-muon/dimuon/mixed-events/invariantMass_ScaledMftKine_GlobalMatchesCuts_TB");
+  if (invmass) {
+  NormalizeInvmassME(invmass, invmassME);
+  invmass->SetLineColor(kBlack);
+  invmass->Rebin(rebin);
+  invmass->GetXaxis()->SetRangeUser(massMin, massMax);
+  invmass->Draw("E");
+  //invmassMuonTracks4ME->Draw("same");
+  FitJPsi(invmass);
+  }
+  // bottom-top
+  c.cd(3);
+  invmass = GetTH1(fAnalysisResults, "qa-muon/dimuon/invariantMass_ScaledMftKine_GlobalMatchesCuts_BT");
+  invmassME = GetTH1(fAnalysisResults, "qa-muon/dimuon/mixed-events/invariantMass_ScaledMftKine_GlobalMatchesCuts_BT");
+  if (invmass) {
+  NormalizeInvmassME(invmass, invmassME);
+  invmass->SetLineColor(kBlack);
+  invmass->Rebin(rebin);
+  invmass->GetXaxis()->SetRangeUser(massMin, massMax);
+  invmass->Draw("E");
+  //invmassMuonTracks4ME->Draw("same");
+  FitJPsi(invmass);
+  }
+  // bottom-bottom
+  c.cd(4);
+  invmass = GetTH1(fAnalysisResults, "qa-muon/dimuon/invariantMass_ScaledMftKine_GlobalMatchesCuts_BB");
+  invmassME = GetTH1(fAnalysisResults, "qa-muon/dimuon/mixed-events/invariantMass_ScaledMftKine_GlobalMatchesCuts_BB");
+  if (invmass) {
+  NormalizeInvmassME(invmass, invmassME);
+  invmass->SetLineColor(kBlack);
+  invmass->Rebin(rebin);
+  invmass->GetXaxis()->SetRangeUser(massMin, massMax);
+  invmass->Draw("E");
+  //invmassMuonTracks4ME->Draw("same");
+  FitJPsi(invmass);
+  }
+
+  c.SaveAs("invmass_AO2D.pdf");
+
+  c.Clear();
 
   TH1* histogram;
   TH2* histogram2;
