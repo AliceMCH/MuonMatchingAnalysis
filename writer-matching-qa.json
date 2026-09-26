@@ -1,0 +1,21 @@
+{
+  "OutputDirector": {
+    "debugmode": true,
+    "resfile": "MatchingQA",
+    "resfilemode": "RECREATE",
+    "ntfmerge": 1,
+    "OutputDescriptors": [
+      {
+          "table": "AOD/QAMEVT/0"
+      },
+      {
+          "table": "AOD/QAMCHTRK/0"
+      },
+      {
+          "table": "AOD/QAMCAND/0"
+      }
+    ]
+  }
+}
+
+

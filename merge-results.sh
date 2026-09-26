@@ -6,4 +6,11 @@ if [ -z "$DIR" ]; then
     DIR="AnalysisResults"
 fi
 
-hadd -f ${DIR}/AnalysisResultsFull.root $DIR/AnalysisResults-*.root
+WD=$(dirname $0)
+
+$WD/merge-root-files.sh $DIR "AnalysisResults"
+$WD/merge-root-files.sh $DIR "FwdMatchMLCandidates"
+$WD/merge-root-files.sh $DIR "MftDCA"
+
+echo ""
+echo "Merging done"

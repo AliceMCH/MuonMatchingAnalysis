@@ -1,0 +1,27 @@
+{
+  "OutputDirector": {
+    "debugmode": true,
+    "resfile": "GlobalAlignment",
+    "resfilemode": "RECREATE",
+    "ntfmerge": 1,
+    "OutputDescriptors": [
+      {
+          "table": "AOD/MACOLL/0"
+      },
+      {
+          "table": "AOD/MAFWDTRACK/0"
+      },
+      {
+          "table": "AOD/MAFWDTRACKSCOV/0"
+      },
+      {
+          "table": "AOD/MAFWDTRKCL/0"
+      },
+      {
+          "table": "AOD/MAMFTTRK/0"
+      }
+    ]
+  }
+}
+
+

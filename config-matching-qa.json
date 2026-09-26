@@ -1,0 +1,792 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "aod-max-io-rate": "0",
+        "time-limit": "0",
+        "orbit-offset-enumeration": "0",
+        "orbit-multiplier-enumeration": "0",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1"
+    },
+    "internal-dpl-aod-spawner": "",
+    "internal-dpl-aod-index-builder": "",
+    "eventselection-run3": {
+        "timestamp": {
+            "verbose": "false",
+            "fatalOnInvalidTimestamp": "false",
+            "rct-path": "RCT\/Info\/RunInformation",
+            "orbit-reset-path": "CTP\/Calib\/OrbitReset",
+            "isRun2MC": "-1"
+        },
+        "bcselOpts": {
+            "amIneeded": "-1",
+            "triggerBcShift": "0",
+            "ITSROFrameStartBorderMargin": "-1",
+            "ITSROFrameEndBorderMargin": "-1",
+            "TimeFrameStartBorderMargin": "-1",
+            "TimeFrameEndBorderMargin": "-1",
+            "checkRunDurationLimits": "false",
+            "maxInactiveChipsPerLayer": {
+                "values": [
+                    "8",
+                    "8",
+                    "8",
+                    "111",
+                    "111",
+                    "195",
+                    "195"
+                ]
+            },
+            "NumberOfOrbitsPerTF": "-1"
+        },
+        "evselOpts": {
+            "amIneeded": "-1",
+            "muonSelection": "0",
+            "maxDiffZvtxFT0vsPV": "3",
+            "isMC": "-1",
+            "confSigmaBCforHighPtTracks": "4",
+            "TimeIntervalForOccupancyCalculationMin": "-40",
+            "TimeIntervalForOccupancyCalculationMax": "100",
+            "TimeRangeVetoOnCollStrict": "10",
+            "TimeRangeVetoOnCollNarrow": "0.25",
+            "FT0CamplPerCollCutVetoOnCollInTimeRange": "8000",
+            "FT0CamplPerCollCutVetoOnCollInROF": "5000",
+            "EpsilonVzDiffVetoInROF": "0.300000012",
+            "UseWeightsForOccupancyEstimator": "true",
+            "NumberOfOrbitsPerTF": "-1",
+            "VzDiffNsigma": "3",
+            "VzDiffMargin": "0.200000003"
+        },
+        "lumiOpts": {
+            "amIneeded": "-1"
+        },
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch"
+    },
+    "fwd-track-to-collision-association": {
+        "nSigmaForTimeCompat": "3",
+        "timeMargin": "0",
+        "includeUnassigned": "false",
+        "fillTableOfCollIdsPerTrack": "true",
+        "bcWindowForOneSigma": "115",
+        "processFwdAssocWithTime": "true",
+        "processFwdAssocWithTimeReAlign": "false",
+        "processFwdStandardAssoc": "false",
+        "processMFTAssocWithTime": "true",
+        "processMFTStandardAssoc": "false"
+    },
+    "fwd-track-extension": "",
+    "track-propagation": {
+        "trackTuner": {
+            "debugInfo": "false",
+            "updateTrackDCAs": "false",
+            "updateTrackCovMat": "false",
+            "updateCurvature": "false",
+            "updateCurvatureIU": "false",
+            "updatePulls": "false",
+            "isInputFileFromCCDB": "false",
+            "pathInputFile": "",
+            "nameInputFile": "",
+            "pathFileQoverPt": "",
+            "nameFileQoverPt": "",
+            "usePvRefitCorrections": "false",
+            "qOverPtMC": "-1",
+            "qOverPtData": "-1",
+            "nPhiBins": "0",
+            "autoDetectDcaCalib": "false"
+        },
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "lutPath": "GLO\/Param\/MatLUT",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "mVtxPath": "GLO\/Calib\/MeanVertex",
+        "minPropagationDistance": "83.0999985",
+        "useTrackTuner": "false",
+        "fillTrackTunerTable": "false",
+        "trackTunerConfigSource": "1",
+        "trackTunerParams": "debugInfo=0|updateTrackDCAs=1|updateTrackCovMat=1|updateCurvature=0|updateCurvatureIU=0|updatePulls=0|isInputFileFromCCDB=1|pathInputFile=Users\/m\/mfaggin\/test\/inputsTrackTuner\/PbPb2022|nameInputFile=trackTuner_DataLHC22sPass5_McLHC22l1b2_run529397.root|pathFileQoverPt=Users\/h\/hsharma\/qOverPtGraphs|nameFileQoverPt=D0sigma_Data_removal_itstps_MC_LHC22b1b.root|usePvRefitCorrections=0|qOverPtMC=-1.|qOverPtData=-1.",
+        "axisPtQA": {
+            "values": [
+                "0",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.40000000596046448",
+                "0.5",
+                "0.60000002384185791",
+                "0.69999998807907104",
+                "0.80000001192092896",
+                "0.89999997615814209",
+                "1",
+                "1.1000000238418579",
+                "1.200000047683716",
+                "1.2999999523162842",
+                "1.3999999761581421",
+                "1.5",
+                "1.6000000238418579",
+                "1.700000047683716",
+                "1.7999999523162842",
+                "1.8999999761581421",
+                "2",
+                "2.2000000476837158",
+                "2.4000000953674321",
+                "2.5999999046325684",
+                "2.7999999523162842",
+                "3",
+                "3.2000000476837158",
+                "3.4000000953674321",
+                "3.5999999046325684",
+                "3.7999999523162842",
+                "4",
+                "4.4000000953674316",
+                "4.8000001907348633",
+                "5.1999998092651367",
+                "5.5999999046325684",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "17",
+                "19",
+                "21",
+                "23",
+                "25",
+                "30",
+                "35",
+                "40",
+                "50"
+            ]
+        },
+        "processStandard": "true",
+        "processStandardWithPID": "false",
+        "processCovarianceMc": "false",
+        "processCovariance": "false",
+        "processCovarianceWithPID": "false"
+    },
+    "track-selection": {
+        "isRun3": "false",
+        "produceTable": "-1",
+        "produceFBextendedTable": "-1",
+        "compatibilityIU": "false",
+        "itsMatching": "0",
+        "dcaSetup": "0",
+        "ptMin": "0.100000001",
+        "ptMax": "1e+10",
+        "etaMin": "-0.800000012",
+        "etaMax": "0.800000012"
+    },
+    "track-to-collision-association": {
+        "nSigmaForTimeCompat": "4",
+        "timeMargin": "0",
+        "setTrackSelections": "1",
+        "usePVAssociation": "true",
+        "includeUnassigned": "false",
+        "fillTableOfCollIdsPerTrack": "true",
+        "bcWindowForOneSigma": "60",
+        "processAssocWithTime": "true",
+        "processStandardAssoc": "false"
+    },
+    "ambiguous-track-propagation": {
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "mVtxPath": "GLO\/Calib\/MeanVertex",
+        "produceExtra": "false",
+        "produceHistos": "false",
+        "removeTrivialAssoc": "false",
+        "binsDCAxy": {
+            "values": [
+                "200",
+                "-1",
+                "1"
+            ]
+        },
+        "binsDCAz": {
+            "values": [
+                "200",
+                "-1",
+                "1"
+            ]
+        },
+        "processCentral": "true",
+        "processMFT": "false",
+        "processMFTReassoc": "true",
+        "processMFTReassoc3D": "false"
+    },
+    "mult-cent-table": {
+        "enabledTables": {
+            "labels_rows": [
+                "FV0Mults",
+                "FV0AOuterMults",
+                "FT0Mults",
+                "FDDMults",
+                "ZDCMults",
+                "TrackletMults",
+                "TPCMults",
+                "PVMults",
+                "MultsExtra",
+                "MultSelections",
+                "FV0MultZeqs",
+                "FT0MultZeqs",
+                "FDDMultZeqs",
+                "PVMultZeqs",
+                "GlobalMultZeqs",
+                "MFTMultZeqs",
+                "MultMCExtras",
+                "Mult2MCExtras",
+                "MFTMults",
+                "MultsGlobal",
+                "CentRun2V0Ms",
+                "CentRun2V0As",
+                "CentRun2SPDTrks",
+                "CentRun2SPDClss",
+                "CentRun2CL0s",
+                "CentRun2CL1s",
+                "CentFV0As",
+                "CentFT0Ms",
+                "CentFT0As",
+                "CentFT0Cs",
+                "CentFT0CVariant1s",
+                "CentFT0CVariant2s",
+                "CentFDDMs",
+                "CentNTPVs",
+                "CentNGlobals",
+                "CentMFTs",
+                "BCCentFT0Ms",
+                "BCCentFT0As",
+                "BCCentFT0Cs"
+            ],
+            "labels_cols": [
+                "enable"
+            ],
+            "values": [
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ],
+                [
+                    "-1"
+                ]
+            ]
+        },
+        "autoConfigureProcess": "false",
+        "doVertexZeq": "1",
+        "minPtGlobalTrack": "0.150000006",
+        "maxPtGlobalTrack": "1e+10",
+        "minNclsITSGlobalTrack": "5",
+        "minNclsITSibGlobalTrack": "1",
+        "ccdbPathVtxZ": "Centrality\/Calibration",
+        "ccdbPathCentrality": "Centrality\/Estimators",
+        "reconstructionPass": "",
+        "generatorName": "PYTHIA",
+        "embedINELgtZEROselection": "false",
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch",
+        "processRun2": "false",
+        "processRun3": "true",
+        "processRun3WithGlobalCounters": "false",
+        "processMFT": "true",
+        "processMonteCarlo": "false",
+        "processMonteCarlo2Mults": "false",
+        "_check_processMonteCarlo": "true",
+        "_check_processMonteCarlo2Mults": "true",
+        "processCentralityRun2": "false",
+        "processCentralityRun3": "true"
+    },
+    "mft-mch-matcher": {
+        "cfgSamplingFraction": "1.0",
+        "_cfgSamplingFractionTrueLeadingMatches": "0.1",
+        "_cfgSamplingFractionTrueNonLeadingMatches": "0.1",
+        "_cfgSamplingFractionWrongLeadingMatches": "0.1",
+        "_cfgSamplingFractionWrongNonLeadingMatches": "0.02",
+        "_cfgSamplingFractionDecayLeadingMatches": "1.0",
+        "_cfgSamplingFractionDecayNonLeadingMatches": "1.0",
+        "_cfgSamplingFractionFakeLeadingMatches": "0.5",
+        "_cfgSamplingFractionFakeNonLeadingMatches": "0.1",
+        "_cfgSamplingBcOddness": "0",
+        "cfgPMchLow": "0",
+        "cfgPtMchLow": "0.3",
+        "cfgEtaMchLow": "-4",
+        "cfgEtaMchUp": "-2.5",
+        "cfgRabsLow": "17.6000004",
+        "cfgRabsUp": "89.5",
+        "cfgPdcaUp": "6",
+        "cfgTrackChi2MchUp": "5",
+        "cfgMatchingChi2MchMidUp": "999",
+        "cfgEtaMFTlow": "-3.5999999",
+        "cfgEtaMFTup": "-2.5",
+        "cfgTrackChi2MFTUp": "10",
+        "cfgPtMFTLow": "0.100000001",
+        "cfgMatchingPlaneZ": "-77.5",
+        "cfgMaxCandidates": "0",
+        "cfgKeepBestMatch": "false",
+        "cfgzMatching": "-77.5",
+        "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+        "grpPath": "GLO\/GRP\/GRP",
+        "grpmagPath": "GLO\/Config\/GRPMagField",
+        "geoPath": "GLO\/Config\/GeometryAligned",
+        "processMC": "true",
+        "processRD": "false"
+    },
+    "global-muon-matching": {
+        "processData": "true",
+        "processMixedData": "false",
+        "cfgMaxDeltaZ": "5.0",
+        "cfgEnableMCHRefit": "true",
+        "cfgEnableMCHRealign": "false",
+        "cfgFieldOriginBiasZ": "10.0",
+        "_cfgCcdbNoLaterThanNew": "1776884033026",
+        "_cfgGeoNewPath": "Users/j/jcastill/Users/j/jcastill/GeometryAlignedLoczzm4pLHC24adap3maSRCH12Ph2R5aShiftCHAllMFT2Shift10OR5aa",
+
+        "_cfgCcdbNoLaterThan": "1784035785320",
+        "_cfgCcdbNoLaterThanRef": "1784035785320",
+        "_cfgCcdbNoLaterThanNew": "1784035785320",
+        
+        "_cfgGeoPath": "TestReco/Fwd2026_ITSv4/GLO/Config/GeometryAligned",
+        "_cfgGeoRefPath": "TestReco/Fwd2026_ITSv4/GLO/Config/GeometryAligned",
+        "_cfgGeoNewPath": "TestReco/Fwd2026_ITSv4/GLO/Config/GeometryAligned",
+
+        "cfgEnableMFTAlignmentCorrections": "false",
+        "cfgCustomMatchingStrategy": "0",
+        "cfgMlModelLabel": "XGBOOSTv1",
+        "cfgMlModelPathCcdb": "Users/a/aferrero/XGBOOSTv1",
+        "cfgMlModelName": "model.onnx",
+        "cfgMlInputFeatures": {
+            "values": [
+                "xMCH",
+ "yMCH",
+ "phiMCH",
+ "tglMCH",
+ "qOverptMCH",
+ "chi2MCH",
+ "pdca",
+ "Rabs",
+ "cXXMCH",
+ "cYYMCH",
+ "cPhiPhiMCH",
+ "cTglTglMCH",
+ "c1Pt21Pt2MCH",
+ "cXYMCH",
+ "cPhiYMCH",
+ "cPhiXMCH",
+ "cTglXMCH",
+ "cTglYMCH",
+ "cTglPhiMCH",
+ "c1PtXMCH",
+ "c1PtYMCH",
+ "c1PtPhiMCH",
+ "c1PtTglMCH",
+ "xMFT",
+ "yMFT",
+ "phiMFT",
+ "tglMFT",
+ "qOverptMFT",
+ "chi2MFT",
+ "trackTypeMFT",
+ "cXXMFT",
+ "cYYMFT",
+ "cPhiPhiMFT",
+ "cTglTglMFT",
+ "c1Pt21Pt2MFT",
+ "cXYMFT",
+ "cPhiYMFT",
+ "cPhiXMFT",
+ "cTglXMFT",
+ "cTglYMFT",
+ "cTglPhiMFT",
+ "c1PtXMFT",
+ "c1PtYMFT",
+ "c1PtPhiMFT",
+ "c1PtTglMFT",
+ "dcaX",
+ "dcaY",
+ "isAmbig",
+ "multMFT",
+ "etaMCH",
+ "etaMFT",
+ "deltaEta",
+ "deltaX",
+ "deltaY",
+ "deltaPhi",
+ "deltaTgl",
+ "deltaR",
+ "sameSign",
+ "ptMCH",
+ "ptMFT",
+ "deltaPt",
+ "deltaPtRel",
+ "pullPt",
+ "pullX",
+ "pullY",
+ "pullR",
+ "pullPhi",
+ "pullTgl",
+ "deltaDirection"
+            ]
+        },
+        "cfgMlModelMatchingScoreCut": "0.5",
+        "cfgMlModelMatchingPlaneZ": "-77.5"
+    },
+    "qa-matching": {
+        "cfgNCandidatesMax": "20",
+        "cfgMftTrackMultiplicityMax": "10000",
+
+        "cfgPMchLow": "0.0",
+        "cfgPtMchLow": "0.3",
+
+        "cfgVtxZLow": "-5.0",
+        "cfgVtxZUp": "5.0",
+        
+
+        "cfgChi2FunctionLabel1": "",
+        "cfgChi2FunctionLabel3": "",
+        "cfgChi2FunctionLabel4": "",
+        
+        "cfgChi2FunctionLabel_4": "MatchXYPhiTanlMom-89cm",
+        "cfgChi2FunctionNames_4": "matchALL",
+        "cfgChi2FunctionMatchingScoreCut_4": "0.5",
+        "cfgChi2FunctionMatchingPlaneZ_4": "-89.0",
+        "cfgMatchingExtrapMethod_4": "0",
+        
+        "_cfgChi2FunctionLabel4": "MatchXYPhiTanlMom-89cm",
+        "cfgChi2FunctionNames4": "matchALL",
+        "cfgChi2FunctionMatchingScoreCut4": "0.5",
+        "cfgChi2FunctionMatchingPlaneZ4": "-89.0",
+        "cfgMatchingExtrapMethod4": "0",
+        
+        "cfgMLModelLabel_1": "MLTest",
+        "cfgMLModelPathCCDB_1": "Users/a/aferrero/MLTest",
+        "cfgMLModelName_1": "model.onnx",
+        "cfgMLInputFeatures_1": "xMCH, yMCH, phiMCH, tglMCH, qOverptMCH, chi2MCH, pdca, Rabs, cXXMCH, cYYMCH, cPhiPhiMCH, cTglTglMCH, c1Pt21Pt2MCH, xMFT, yMFT, phiMFT, tglMFT, qOverptMFT, chi2MFT, cXXMFT, cYYMFT, cPhiPhiMFT, cTglTglMFT, c1Pt21Pt2MFT, deltaX, deltaY, deltaPhi, deltaPt",
+        "cfgMLModelMatchingScoreCut_1": "0.5",
+        "cfgMLModelMatchingPlaneZ_1": "-77.5",
+        "cfgMLMatchingExtrapMethod_1": "0",
+        
+        "cfgMlModelLabel1": "",
+        "_cfgMlModelLabel1": "MLTest",
+        "cfgMlModelPathCcdb1": "Users/a/aferrero/MLTest_simple",
+        "cfgMlModelName1": "model_positive.onnx",
+        "_cfgMlInputFeatures1": "xMCH, yMCH, phiMCH, tglMCH, qOverptMCH, chi2MCH, pdca, Rabs, cXXMCH, cYYMCH, cPhiPhiMCH, cTglTglMCH, c1Pt21Pt2MCH, xMFT, yMFT, phiMFT, tglMFT, qOverptMFT, chi2MFT, cXXMFT, cYYMFT, cPhiPhiMFT, cTglTglMFT, c1Pt21Pt2MFT, deltaX, deltaY, deltaPhi, deltaPt",
+        "cfgMlInputFeatures1": {
+            "values": [
+                "xMCH", "yMCH", "phiMCH", "tglMCH", "qOverptMCH", "chi2MCH", "pdca", "Rabs", "cXXMCH", "cYYMCH", "cPhiPhiMCH", "cTglTglMCH", "c1Pt21Pt2MCH", "xMFT", "yMFT", "phiMFT", "tglMFT", "qOverptMFT", "chi2MFT", "cXXMFT", "cYYMFT", "cPhiPhiMFT", "cTglTglMFT", "c1Pt21Pt2MFT", "deltaX", "deltaY", "deltaPhi", "deltaPt"
+            ]
+        },
+        "cfgMlModelMatchingScoreCut1": "0.5",
+        "cfgMlModelMatchingPlaneZ1": "-77.5",
+        "cfgMlMatchingExtrapMethod1": "0",
+        
+        "cfgMlModelLabel2": "XGBOOSTv1",
+        "cfgMlModelPathCcdb2": "Users/a/aferrero/XGBOOSTv1",
+        "cfgMlModelName2": "model.onnx",
+        "cfgMlInputFeatures2": {
+            "values": [
+                "xMCH",
+                "yMCH",
+                "phiMCH",
+                "tglMCH",
+                "qOverptMCH",
+                "chi2MCH",
+                "pdca",
+                "Rabs",
+                "cXXMCH",
+                "cYYMCH",
+                "cPhiPhiMCH",
+                "cTglTglMCH",
+                "c1Pt21Pt2MCH",
+                "cXYMCH",
+                "cPhiYMCH",
+                "cPhiXMCH",
+                "cTglXMCH",
+                "cTglYMCH",
+                "cTglPhiMCH",
+                "c1PtXMCH",
+                "c1PtYMCH",
+                "c1PtPhiMCH",
+                "c1PtTglMCH",
+                "xMFT",
+                "yMFT",
+                "phiMFT",
+                "tglMFT",
+                "qOverptMFT",
+                "chi2MFT",
+                "trackTypeMFT",
+                "cXXMFT",
+                "cYYMFT",
+                "cPhiPhiMFT",
+                "cTglTglMFT",
+                "c1Pt21Pt2MFT",
+                "cXYMFT",
+                "cPhiYMFT",
+                "cPhiXMFT",
+                "cTglXMFT",
+                "cTglYMFT",
+                "cTglPhiMFT",
+                "c1PtXMFT",
+                "c1PtYMFT",
+                "c1PtPhiMFT",
+                "c1PtTglMFT",
+                "dcaX",
+                "dcaY",
+                "isAmbig",
+                "multMFT",
+                "etaMCH",
+                "etaMFT",
+                "deltaEta",
+                "deltaX",
+                "deltaY",
+                "deltaPhi",
+                "deltaTgl",
+                "deltaR",
+                "sameSign",
+                "ptMCH",
+                "ptMFT",
+                "deltaPt",
+                "deltaPtRel",
+                "pullPt",
+                "pullX",
+                "pullY",
+                "pullR",
+                "pullPhi",
+                "pullTgl",
+                "deltaDirection"
+            ]
+        },
+        "cfgMlModelMatchingScoreCut2": "0.5",
+        "cfgMlModelMatchingPlaneZ2": "-77.5",
+        "cfgMlMatchingExtrapMethod2": "0",
+        
+        "cfgMlModelLabel3": "XGBOOSTv2",
+        "cfgMlModelPathCcdb3": "Users/a/aferrero/XGBOOSTv2",
+        "cfgMlModelName3": "model.onnx",
+        "cfgMlInputFeatures3": {
+            "values": [
+                "xMCH",
+                "yMCH",
+                "phiMCH",
+                "Rabs",
+                "qOverptMCH",
+                "chi2MCH",
+                "pdca",
+                "cYYMCH",
+                "c1Pt21Pt2MCH",
+                "cTglTglMCH",
+                "cXYMCH",
+                "cTglXMCH",
+                "cPhiXMCH",
+                "cTglPhiMCH",
+                "c1PtXMCH",
+                "c1PtYMCH",
+                "c1PtPhiMCH",
+                "c1PtTglMCH",
+
+                "xMFT",
+                "yMFT",
+                "etaMFT",
+                "qOverptMFT",
+                "chi2MFT",
+                "trackTypeMFT",
+                "cPhiPhiMFT",
+                "cTglTglMFT",
+                
+                "dcaX",
+                "dcaY",
+                "isAmbig",
+                "multMFT",
+                "deltaEta",
+                "deltaX",
+                "deltaY",
+                "deltaPhi",
+                "absDeltaPhi",
+                "absDeltaX",
+                "absDeltaY",
+                "deltaR",
+                "sameSign",
+                "ptMCH",
+                "ptMFT",
+                "deltaPtRel",
+                "pullPt",
+                "pullX",
+                "pullY",
+                "pullR",
+                "pullPhi",
+                "pullTgl",
+                "absPullX",
+                "absPullY",
+                "absPullPhi",
+                "deltaDirection"
+            ]
+        },
+        "cfgMlModelMatchingScoreCut3": "0.5",
+        "cfgMlModelMatchingPlaneZ3": "-77.5",
+        "cfgMlMatchingExtrapMethod3": "0",
+        
+        "cfgMlModelLabel4": "XGBOOSTv3",
+        "cfgMlModelPathCcdb4": "Users/a/aferrero/XGBOOSTv3",
+        "cfgMlModelName4": "model.onnx",
+        "cfgMlInputFeatures4": {
+            "values": [
+                "deltaDirection",
+                "pullPt",
+                "absPullPhi",
+                "pullTgl",
+                "ptMFT",
+                "cPhiPhiMFT",
+                "deltaR",
+                "sameSign",
+                "deltaEta",
+                "deltaTgl",
+                "deltaPtRel",
+                "cYYMFT",
+                "c1Pt21Pt2MFT",
+                "pullPhi",
+                "cXXMFT",
+                "c1PtPhiMFT",
+                "yMCH",
+                "xMCH",
+                "deltaPt",
+                "absDeltaPhi",
+                "pullR",
+                "pullX",
+                "pullY",
+                "cXYMFT",
+                "cTglTglMCH",
+                "deltaPhi",
+                "c1PtXMFT"
+            ]
+        },
+        "cfgMlModelMatchingScoreCut4": "0.5",
+        "cfgMlModelMatchingPlaneZ4": "-77.5",
+        "cfgMlMatchingExtrapMethod4": "0",
+
+        "cfgMatchAllTracks": "false",
+
+        "cfgProduceCandidateFwdTracks": "false",
+
+        "cfgIsMc": "true",
+        "processQAMC": "true",
+        "processQA": "false",
+        "processQAReAlign": "false"
+    },
+    "internal-dpl-aod-writer": "",
+    "internal-dpl-aod-global-analysis-file-sink": "",
+    "internal-dpl-injected-dummy-sink": ""
+}
