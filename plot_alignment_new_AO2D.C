@@ -2,7 +2,7 @@
 
 TFile* fAnalysisResults;
 
-constexpr int nPoints = 5;
+constexpr int nPoints = 3;
 
 TH1* GetTH1(TFile* f, TString histname)
 {
@@ -409,7 +409,7 @@ std::pair<double, double> PlotDCAMCH(std::string histName)
 
 void PlotZTrend(int n, double* xv, std::array<std::array<std::pair<double, double>, 4>, nPoints + 1>& values, const char* title, double ymin, double ymax, TCanvas& c)
 {
-  double exv[nPoints + 1] = {0, 0, 0, 0, 0};
+  double exv[nPoints + 1] = {0, 0, 0, 0};
   double yv[nPoints + 1];
   double eyv[nPoints + 1];
   std::array<std::string, 4> quadrants = {"Q0", "Q1", "Q2", "Q3"};
@@ -446,22 +446,23 @@ void PlotZTrend(int n, double* xv, std::array<std::array<std::pair<double, doubl
 
 void plot_alignment_new_AO2D()
 {
-  //fAnalysisResults = new TFile("AnalysisResults.root");
-  fAnalysisResults = new TFile("AnalysisResults/AnalysisResultsFull.root");
+  fAnalysisResults = new TFile("AnalysisResults.root");
+  //fAnalysisResults = new TFile("AnalysisResults/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24l7/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC22p/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC23zk/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-4/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-7/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC23h-apass4_skimmed-qa/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-with-MFT-realignment-at-DCA/AnalysisResultsFull.root");
 
   constexpr double firstMFTPlaneZ = o2::mft::constants::mft::LayerZCoordinate()[0];
   constexpr double lastMFTPlaneZ = o2::mft::constants::mft::LayerZCoordinate()[9];
   std::array<double, nPoints> zRefPlane{
       firstMFTPlaneZ,
       lastMFTPlaneZ,
-      -90.0,
-      -300.0,
+      //-90.0,
+      //-300.0,
       //-505.0,
       -520.0
   };
@@ -469,8 +470,8 @@ void plot_alignment_new_AO2D()
   std::vector<std::string> referencePlaneNames = {
       "MFT-begin",
       "MFT-end",
-      "absorber-begin",
-      "absorber-mid",
+      //"absorber-begin",
+      //"absorber-mid",
       //"absorber-end",
       "MCH-begin"
   };
@@ -638,8 +639,8 @@ void plot_alignment_new_AO2D()
   }
 
 
-  double xv[nPoints + 1] = {0, -zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3], -zRefPlane[4]};
-  double xv2[nPoints] = {-zRefPlane[0], -zRefPlane[1], -zRefPlane[2], -zRefPlane[3], -zRefPlane[4]};
+  double xv[nPoints + 1] = {0, -zRefPlane[0], -zRefPlane[1], -zRefPlane[2]};
+  double xv2[nPoints] = {-zRefPlane[0], -zRefPlane[1], -zRefPlane[2]};
 
   PlotZTrend(nPoints + 1, xv, meanDx, "#Delta(x) vs. z;z (cm); #Delta(x) (cm)", -1.0, 1.0, c);
   PlotZTrend(nPoints, xv2, meanDThetax, "#Delta(#theta_{x}) vs. z;z (cm); #Delta(#theta_{x}) (cm)", -0.2, 0.2, c);
@@ -649,4 +650,18 @@ void plot_alignment_new_AO2D()
 
   c.Clear();
   c.SaveAs("alignment_AO2D.pdf)");
+
+  std::cout << "\nAverage positions at CH1:" << std::endl;
+  std::cout << std::format("Dx={:0.4f}, {:0.4f}, {:0.4f}, {:0.4f}", meanDx[nPoints][0].first, meanDx[nPoints][1].first, meanDx[nPoints][2].first, meanDx[nPoints][3].first) << std::endl;
+  std::cout << std::format("Dy={:0.4f}, {:0.4f}, {:0.4f}, {:0.4f}", meanDy[nPoints][0].first, meanDy[nPoints][1].first, meanDy[nPoints][2].first, meanDy[nPoints][3].first) << std::endl;
+  //std::cout << std::format("    Q0: Dx={:0.4f} Dy={:0.4f}", meanDx[nPoints][0].first, meanDy[nPoints][0].first) << std::endl;
+  //std::cout << std::format("    Q1: Dx={:0.4f} Dy={:0.4f}", meanDx[nPoints][1].first, meanDy[nPoints][1].first) << std::endl;
+  //std::cout << std::format("    Q2: Dx={:0.4f} Dy={:0.4f}", meanDx[nPoints][2].first, meanDy[nPoints][2].first) << std::endl;
+  //std::cout << std::format("    Q3: Dx={:0.4f} Dy={:0.4f}", meanDx[nPoints][3].first, meanDy[nPoints][3].first) << std::endl;
+
+  std::cout << "\nAverage angles at CH1:" << std::endl;
+  std::cout << std::format("    Q0: Dthetax={:0.4f} Dthetay={:0.4f}", meanDThetax[nPoints-1][0].first, meanDThetay[nPoints-1][0].first) << std::endl;
+  std::cout << std::format("    Q1: Dthetax={:0.4f} Dthetay={:0.4f}", meanDThetax[nPoints-1][1].first, meanDThetay[nPoints-1][1].first) << std::endl;
+  std::cout << std::format("    Q2: Dthetax={:0.4f} Dthetay={:0.4f}", meanDThetax[nPoints-1][2].first, meanDThetay[nPoints-1][2].first) << std::endl;
+  std::cout << std::format("    Q3: Dthetax={:0.4f} Dthetay={:0.4f}", meanDThetax[nPoints-1][3].first, meanDThetay[nPoints-1][3].first) << std::endl;
 }

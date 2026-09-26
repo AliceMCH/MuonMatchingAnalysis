@@ -171,6 +171,14 @@ void PlotDCAProjection(std::string histName, float yMin, float yMax, int projReb
   histogramMean->Fit("linFit", "Q");
   histogramMean->Draw("E");
 
+  TLine* line1 = new TLine(histogramMean->GetXaxis()->GetXmin(), 0, histogramMean->GetXaxis()->GetXmax(), 0);
+  line1->SetLineStyle(kDashed);
+  line1->Draw();
+
+  TLine* line2 = new TLine(0, yMin, 0, yMax);
+  line2->SetLineStyle(kDashed);
+  line2->Draw();
+
   std::cout << std::format("Slope: {:0.4f} mm / 10 m", linFit.GetParameter(1) * 1000 * 10) << std::endl;
   //c.SaveAs("residuals_AO2D.pdf");
   //histogramSigma->Draw("E");
@@ -721,7 +729,10 @@ void PlotZTrendPNLR(int n, double* xv, std::array<std::array<std::array<std::pai
 void plot_residuals_AO2D()
 {
   //fAnalysisResults = new TFile("AnalysisResults.root");
-  fAnalysisResults = new TFile("AnalysisResults/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults/AnalysisResultsFull.root");
+  fAnalysisResults = new TFile("AnalysisResults-LHC24aq-apass1_muon_matching3-qa-new-MFT-geometry/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults-LHC24aq-apass1_muon_matching-qa/AnalysisResultsFull.root");
+  //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-with-MFT-realignment-at-DCA/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-with-MFT-realignment/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-no-MFT-realignment/AnalysisResultsFull.root");
   //fAnalysisResults = new TFile("AnalysisResults-LHC24am-qa-5/AnalysisResultsFull.root");
@@ -1024,6 +1035,7 @@ void plot_residuals_AO2D()
   PlotZTrendPNLR(10, defaultChamberZ, meanDy_LR_TB_PN[0], DCAy[0], "#Delta(y) vs. chamber z - MFT top;chamber z (cm); #Delta(y) (cm)", -5.0, 5.0, c, true);
   PlotZTrendPNLR(10, defaultChamberZ, meanDy_LR_TB_PN[1], DCAy[1], "#Delta(y) vs. chamber z - MFT bottom;chamber z (cm); #Delta(y) (cm)", -5.0, 5.0, c);
 
+  /*
   // MCH residuals
 
   topBottom = {"MCH_top", "MCH_bottom"};
@@ -1057,6 +1069,7 @@ void plot_residuals_AO2D()
   PlotZTrendPNLR(10, defaultChamberZ, mchMeanDx_LR_TB_PN[1], DCAx[1], "#Delta(x) vs. chamber z - MCH bottom;chamber z (cm); #Delta(x) (cm)", -5.0, 5.0, c);
   PlotZTrendPNLR(10, defaultChamberZ, mchMeanDy_LR_TB_PN[0], DCAy[0], "#Delta(y) vs. chamber z - MCH top;chamber z (cm); #Delta(y) (cm)", -5.0, 5.0, c);
   PlotZTrendPNLR(10, defaultChamberZ, mchMeanDy_LR_TB_PN[1], DCAy[1], "#Delta(y) vs. chamber z - MCH bottom;chamber z (cm); #Delta(y) (cm)", -5.0, 5.0, c);
+  */
 
   c.Clear();
   c.SaveAs("residuals_AO2D.pdf)");
@@ -1067,6 +1080,22 @@ void plot_residuals_AO2D()
   int right = 1;
   int pos = 0;
   int neg = 1;
+  std::cout << "\nAverage displacement at CH1:" << std::endl;
+  std::cout << "* MFT top:" << std::endl;
+  std::cout << std::format("    MCH left: Dx={:0.4f} Dy={:0.4f}",
+      (meanDx_LR_TB_PN[top][pos][left][0].first + meanDx_LR_TB_PN[top][neg][left][0].first) / 2.0,
+      (meanDy_LR_TB_PN[top][pos][left][0].first + meanDy_LR_TB_PN[top][neg][left][0].first) / 2.0) << std::endl;
+  std::cout << std::format("    MCH right: Dx={:0.4f} Dy={:0.4f}",
+      (meanDx_LR_TB_PN[top][pos][right][0].first + meanDx_LR_TB_PN[top][neg][right][0].first) / 2.0,
+      (meanDy_LR_TB_PN[top][pos][right][0].first + meanDy_LR_TB_PN[top][neg][right][0].first) / 2.0) << std::endl;
+  std::cout << "* MFT bottom:" << std::endl;
+  std::cout << std::format("    MCH left: Dx={:0.4f} Dy={:0.4f}",
+      (meanDx_LR_TB_PN[bottom][pos][left][0].first + meanDx_LR_TB_PN[bottom][neg][left][0].first) / 2.0,
+      (meanDy_LR_TB_PN[bottom][pos][left][0].first + meanDy_LR_TB_PN[bottom][neg][left][0].first) / 2.0) << std::endl;
+  std::cout << std::format("    MCH right: Dx={:0.4f} Dy={:0.4f}",
+      (meanDx_LR_TB_PN[bottom][pos][right][0].first + meanDx_LR_TB_PN[bottom][neg][right][0].first) / 2.0,
+      (meanDy_LR_TB_PN[bottom][pos][right][0].first + meanDy_LR_TB_PN[bottom][neg][right][0].first) / 2.0) << std::endl;
+
   std::cout << "\nAverage displacement at CH10:" << std::endl;
   std::cout << "* MFT top:" << std::endl;
   std::cout << std::format("    MCH left: Dx={:0.4f} Dy={:0.4f}",
@@ -1082,5 +1111,4 @@ void plot_residuals_AO2D()
   std::cout << std::format("    MCH right: Dx={:0.4f} Dy={:0.4f}",
       (meanDx_LR_TB_PN[bottom][pos][right][9].first + meanDx_LR_TB_PN[bottom][neg][right][9].first) / 2.0,
       (meanDy_LR_TB_PN[bottom][pos][right][9].first + meanDy_LR_TB_PN[bottom][neg][right][9].first) / 2.0) << std::endl;
-
 }
